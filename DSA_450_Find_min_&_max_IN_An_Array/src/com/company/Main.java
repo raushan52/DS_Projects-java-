@@ -2,42 +2,50 @@ package com.company;
 
 public class Main {
 
+    int max,min;
     public static void main(String[] args) {
 
         Main m1 = new Main();
 
         int[] arr = {45, -89, 8, 20, 4, 63, -7, 6, 55, 130, 7};
-        System.out.println("Largest Element is : " + m1.largestElement(arr));
-        System.out.println("Smallest Element is : " + m1.smallestElement(arr));
+
+        int size = arr.length;
+        m1.largestAndSmallestVal(arr,size);
+        System.out.println("Max is : " + m1.max);
+        System.out.println("Min is : " + m1.min);
+
 
     }
 
-    int largestElement(int[] arr){
-        int largestVal = 0;
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 1; j < arr.length; j++){
-                if(arr[i] > arr[j]){
-                    largestVal = i;
+     void largestAndSmallestVal(int arr[], int size){
+
+
+            int i;
+
+            if(size == 1){
+                max = arr[0];
+                min = arr[0];
+            }
+
+            if(arr[0] > arr[1]){
+                max = arr[0];
+                min = arr[1];
+            }else{
+                max = arr[1];
+                min = arr[0];
+            }
+
+            for(i = 2; i < size; i++){
+                if(arr[i] > max){
+                    max = arr[i];
+                }else if(arr[i] < min){
+                    min = arr[i];
                 }
             }
 
-        }
-        return arr[largestVal];
 
     }
 
-    int smallestElement(int[] arr){
 
-        int smallestVal = 0;
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 1; j < arr.length; j++){
-                if(arr[i] < arr[j]){
-                    smallestVal = i ;
-                }
-            }
 
-        }
-        return arr[smallestVal];
-
-    }
 }
